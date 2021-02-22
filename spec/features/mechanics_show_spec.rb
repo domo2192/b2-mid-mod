@@ -33,6 +33,7 @@ RSpec.describe 'Mechanics show page' do
     click_button("Submit")
 
     expect(page).to have_content(tea_cups.name)
+    save_and_open_page
   end
 
 end
