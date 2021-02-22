@@ -4,3 +4,10 @@
 <% @rides.each do |ride| %>
   <p><%= ride.name %></p>
 <% end %>
+
+<h3> Add a ride to your Workload: </h3>
+<%= form_with(model: @mechanic, url: mechanic_path(@mechanic), method:"patch", local:true) do |f| %>
+<h4><%= f.label ":ride id" %></h4>
+<p><%= f.text_field :search, placeholder: "Ride Id" %></p><br>
+   <p><%= f.submit "Submit" %></p>
+   <% end %>

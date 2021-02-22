@@ -27,9 +27,11 @@ RSpec.describe 'Mechanics show page' do
     tea_cups = Ride.create(name: "Tea cups", thrill_rating: 9, open:true)
     visit mechanic_path(@leroy)
     expect(page).not_to have_content(tea_cups.name)
-    expect(page).to have_content("Add a ride to workload:")
-    fill_in :ride_id, with: 3
+    save_and_open_page
+    expect(page).to have_content("Add a ride to your Workload:")
+    fill_in :mechanic_search, with: tea_cups.id
     click_button("Submit")
+
     expect(page).to have_content(tea_cups.name)
   end
 
