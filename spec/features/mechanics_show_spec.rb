@@ -20,4 +20,17 @@ RSpec.describe 'Mechanics show page' do
       expect(page).to have_content(tea_cups.name)
       expect(tea_cups.name).to appear_before(tilta_whirl.name)
   end
+
+  it "you can add a ride to the mechanics workload" do
+    tilta_whirl = @leroy.rides.create(name: "Tilt a Whirl", thrill_rating: 7, open:true)
+    roller_coaster = @leroy.rides.create(name: "Roller Coaster", thrill_rating: 5, open:false)
+    tea_cups = Ride.create(name: "Tea cups", thrill_rating: 9, open:true)
+    visit mechanic_path(@leroy)
+    expect(page).not_to have_content(tea_cups.name)
+    expect(page).to have_content("Add a ride to workload:")
+    fill_in :ride_id, with: 3
+    click_button("Submit")
+    expect(page).to have_content(tea_cups.name)
+  end
+
 end
