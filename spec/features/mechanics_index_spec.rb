@@ -13,6 +13,9 @@ RSpec.describe 'Mechanics index page' do
     expect(page).to have_content(@dominic.name)
     expect(page).to have_content(@ronny.name)
     expect(page).to have_content(@leroy.name)
-    expect(page).to have_content("Years Experience: 10")
+    expect(page).to have_content(@leroy.years_experience)
+    expect(page).to have_content(@ronny.years_experience)
+    expect(page).to have_content(@dominic.years_experience)
+    expect(page).to have_content("Average Years Experience: 10")
   end
 end
